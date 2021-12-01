@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}" />
+  <style>
+      @keyframes moveTitle{
+        from {margin-left: 1%;}
+        to {margin-left: 42%;}
+      }
+  </style>
+  <title>login - FilesSharer</title>
+</head>
+<body>
+  <header>
+    <ul>
+      <li class="left" style="
+        animation: moveTitle 2s ease-in-out 0s 1;
+        animation-fill-mode: forwards;
+        position:relative;
+        left:-12px;
+      "><p class="pagetitle"><a href="/" style="color: #ffffff;">FS</a></p></li>
+    </ul>
+  </header>
+
+  <div id="app"></div>
+</body>
+</html>

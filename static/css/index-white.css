@@ -24,8 +24,7 @@ header ul{
   /* 清除ul标签的默认样式 */
   list-style-type: none;
   white-space:nowrap;
-  overflow: hidden;
-  margin-left: 20px;
+  margin-left: 40px;
   padding: 0;
 }
 header li {
@@ -41,7 +40,7 @@ header p.pagetitle{
   color: #000000;
   font-size: 27px;
   font-family: 'siyuanheiti';
-  margin-top: 20px;
+  margin-top: -10px;
 }
 
 header li a{

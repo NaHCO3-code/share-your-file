@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}" />
-  <title>share your file to others - FilesSharer</title>
-</head>
-<body>
-  <header>
-    <ul>
-      <li class="left"><p class="pagetitle">FS</p></li>
-      <li class="left"><a>关于</a></li>
-      <li class="left"><a>加入</a></li>
+{% extends 'header.html' %}
 
-      <li class="right"><a href="/auth/login">登录/注册</a></li>
-    </ul>
-  </header>
+{% block title %} 分享你的文件 {% endblock %}
 
-  <div id="app"></div>
-</body>
-</html>
+{% block app %}
+
+{% endblock %}

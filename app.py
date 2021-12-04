@@ -16,9 +16,13 @@ def create_app():
     @app.route('/')
     def home():
         return render_template('index.html')
+    
+    @app.route('/auth/register')
+    def auth_register():
+        return render_template('auth/register.html')
 
 
-    # server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
-    # server.serve_forever()
+    server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
+    server.serve_forever()
 
     return app

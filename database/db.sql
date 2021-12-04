@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS files;
+
+CREATE TABLE user (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL,
+    class TEXT NOT NULL,
+    jointime TEXT NOT NULL
+);
+
+CREATE TABLE files (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    path TEXT NOT NULL,
+    ownerid INTEGER,
+    readerClass TEXT NOT NULL,
+    tag TEXT NOT NULL,
+    title TEXT NOT NULL
+)

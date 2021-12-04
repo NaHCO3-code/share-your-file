@@ -1,21 +1,24 @@
-import re
+import os
 from flask import (
     Flask, render_template, request
 )
 from gevent import pywsgi
 
-app = Flask(__name__)
+def create_app():
+    app = Flask(__name__)
+    app.config.from_mapping(
+        DATABASE=os.path.join('./database', 'db.sqlite')
+    )
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+    from database import database
+    database.init_app(app)
+
+    @app.route('/')
+    def home():
+        return render_template('index.html')
 
 
-@app.route('/auth/login', methods=('GET', 'POST'))
-def auth_login():
-    if request.method == 'POST':
-        pass
-    return render_template('/auth/login.html')
+    # server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
+    # server.serve_forever()
 
-server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
-server.serve_forever()
+    return app

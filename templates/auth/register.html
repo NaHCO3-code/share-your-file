@@ -4,12 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}" />
+  <script type="text/javascript" src="{{ url_for('static', filename='js/md5.js') }}"></script>
   <style>
-      @keyframes moveTitle{
-        from {margin-left: 1%;}
-        to {margin-left: 42%;}
-      }
+    @keyframes moveTitle{
+      from {margin-left: 1%;}
+      to {margin-left: 42%;}
+    }
   </style>
+  <script>
+    function mdp(){
+      if(document.getElementsByName('password')[0].value&&document.getElementsByName('password2')[0].value){  
+        document.getElementsByName('password')[0].value = hex_md5(document.getElementsByName('password')[0].value)
+        document.getElementsByName('password2')[0].value = hex_md5(document.getElementsByName('password2')[0].value)
+      }
+    }
+  </script>
   <title>login - FilesSharer</title>
 </head>
 <body>
@@ -27,28 +36,11 @@
   <div id="app">
     <h1>注册</h1><a href="/auth/login">去登录></a>
     <form action="/auth/login" method="post">
-      <p>用户名：<input id="username" /></p>
-      <p>密码：<input id="password" /></p>
-      <p>用户组：
-        <input type="radio" name="class" value="general" id="general"/>普通用户
-        <input type="radio" name="class" value="root" id="root" />root
-      </p>
-      <div id="submit"><input type="submit" value="确定" id="submit" /></div>
+      <p>用户名：<input type="text" name="username" autocomplete="off" required /></p>
+      <p>密码：<input type="password" name="password" required /></p>
+      <p>确认密码：<input type="password" name="password2" required /></p>
+      <input type="submit" value="确定" id="submit" onclick="mdp()" />
     </form>
   </div>
 </body>
-<script>
-  const userClass1 = document.getElementById('root')
-  const userClass2 = document.getElementById('general')
-  var zt=0;
-  setInterval(() => {
-    if(userClass1.checked && (zt==0 || zt==2)){
-      document.getElementById('submit').innerHTML = '<div id="submit">如要注册管理员账号，需要进行身份验证。在这里键入最高管理员提供的私钥以证明身份：<input id="rootkey" /></div>';
-      zt=1;
-    }else if(userClass2.checked && (zt==0 || zt==1)){
-      document.getElementById('submit').innerHTML = '<input type="submit" value="确定" id="submit" />';
-      zt=2;
-    }
-  }, 1000)
-</script>
 </html>

@@ -6,7 +6,7 @@ from flask import (
     Flask, render_template, request
 )
 from gevent import pywsgi
-import execjs
+# import execjs
 
 
 
@@ -114,8 +114,12 @@ def auth_login():
 
 
 
-
-
-# server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
-# server.serve_forever()
-if __name__ == "__main__": app.run(host='0.0.0.0', port='5000')
+# RUN_MODE = 'local'
+RUN_MODE = 'web'
+if RUN_MODE == 'local':
+    if __name__ == "__main__": app.run(host='0.0.0.0', port='5000')
+elif RUN_MODE == 'web':
+    server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
+    server.serve_forever()
+else:
+    print('mode was undefined')

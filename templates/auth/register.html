@@ -13,7 +13,7 @@
   </style>
   <script>
     function mdp(){
-      if(document.getElementsByName('password')[0].value&&document.getElementsByName('password2')[0].value){  
+      if(document.getElementsByName('password')[0].value.length>=6&&document.getElementsByName('password2')[0].value.length>=6){  
         document.getElementsByName('password')[0].value = hex_md5(document.getElementsByName('password')[0].value)
         document.getElementsByName('password2')[0].value = hex_md5(document.getElementsByName('password2')[0].value)
       }
@@ -35,10 +35,11 @@
 
   <div id="app">
     <h1>注册</h1><a href="/auth/login">去登录></a>
-    <form action="/auth/login" method="post">
+    <form action="/auth/register" method="post">
       <p>用户名：<input type="text" name="username" autocomplete="off" required /></p>
       <p>密码：<input type="password" name="password" required /></p>
       <p>确认密码：<input type="password" name="password2" required /></p>
+      <p class="error">{{ error }}</p>
       <input type="submit" value="确定" id="submit" onclick="mdp()" />
     </form>
   </div>

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}" />
   <script type="text/javascript" src="{{ url_for('static', filename='js/md5.js') }}"></script>
-  <style>
+  <!-- <style>
     @keyframes moveTitle{
       from {margin-left: 1%;}
       to {margin-left: 42%;}
     }
-  </style>
+  </style> -->
   <script>
     function mdp(){
       if(document.getElementsByName('password')[0].value.length>=6&&document.getElementsByName('password2')[0].value.length>=6){  
@@ -25,10 +25,11 @@
   <header>
     <ul>
       <li class="left" style="
-        animation: moveTitle 2s ease-in-out 0s 1;
+        /*animation: moveTitle 2s ease-in-out 0s 1;*/
         animation-fill-mode: forwards;
         position:relative;
         left:-12px;
+        margin-left: 42%;
       "><p class="pagetitle"><a href="/" style="color: #ffffff;">FS</a></p></li>
     </ul>
   </header>
@@ -37,7 +38,7 @@
     <h1>注册</h1><a href="/auth/login">去登录></a>
     <form action="/auth/register" method="post">
       <p>用户名：<input type="text" name="username" autocomplete="off" required /></p>
-      <p>密码：<input type="password" name="password" required /></p>
+      <p>密码：<input type="password" name="password" autocomplete="off" required /></p>
       <p>确认密码：<input type="password" name="password2" required /></p>
       <p class="error">{{ error }}</p>
       <input type="submit" value="确定" id="submit" onclick="mdp()" />

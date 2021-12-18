@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/header.css')}}" />
   <script type="text/javascript" src="{{ url_for('static', filename='js/md5.js') }}"></script>
-  <!-- <style>
+  <style>
     @keyframes moveTitle{
-      from {margin-left: 1%;}
-      to {margin-left: 42%;}
+      from {opacity: 1;}
+      to {opacity: 0.5;}
     }
-  </style> -->
+  </style>
   <script>
     function mdp(){
       if(document.getElementsByName('password')[0].value.length>=6&&document.getElementsByName('password2')[0].value.length>=6){  
@@ -25,7 +25,7 @@
   <header>
     <ul>
       <li class="left" style="
-        /*animation: moveTitle 2s ease-in-out 0s 1;*/
+        animation: moveTitle 2s ease-in-out .5s infinite alternate;
         animation-fill-mode: forwards;
         position:relative;
         left:-12px;

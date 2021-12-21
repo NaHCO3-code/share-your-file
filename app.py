@@ -1,6 +1,4 @@
-from abc import update_abstractmethods
 import os,time,random
-import re
 import flask
 from flask import (
     Flask, render_template, request
@@ -33,7 +31,8 @@ database.init_app(app)
 # 路由
 @app.route('/')
 def home():
-    return render_template('index.html')
+    a = flask.session.get('dev')
+    return render_template('index.html', username=str(a))
 
 @app.route('/auth/register', methods=('GET', 'POST'))
 def auth_register():

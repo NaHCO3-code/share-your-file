@@ -4,7 +4,7 @@ from flask import (
     Flask, render_template, request
 )
 from gevent import pywsgi
-import execjs
+# import execjs
 
 
 
@@ -31,7 +31,8 @@ database.init_app(app)
 # 路由
 @app.route('/')
 def home():
-    return render_template('index.html')
+    a = flask.session.get('dev')
+    return render_template('index.html', username=str(a))
 
 @app.route('/auth/register', methods=('GET', 'POST'))
 def auth_register():
@@ -112,8 +113,11 @@ def auth_login():
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 8e8a1ef6f32dea0ee87c2e14707fd847fc9d0cd0
 # RUN_MODE = 'local'
 RUN_MODE = 'web'
 if RUN_MODE == 'local':

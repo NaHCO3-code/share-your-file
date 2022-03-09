@@ -1,6 +1,4 @@
-from abc import update_abstractmethods
 import os,time,random
-import re
 import flask
 from flask import (
     Flask, render_template, request
@@ -61,7 +59,7 @@ def auth_register():
                     int(str(random.randint(10,99))+str(int(time.time()*1000))),
                     username,
                     password,
-                    'peo',
+                    'normal',
                     str(time.time())
                 )
             )
@@ -116,6 +114,12 @@ def auth_login():
 
 
 
-# server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
-# server.serve_forever()
-if __name__ == "__main__": app.run(host='0.0.0.0', port='5000')
+# RUN_MODE = 'local'
+RUN_MODE = 'web'
+if RUN_MODE == 'local':
+    if __name__ == "__main__": app.run(host='0.0.0.0', port='5000')
+elif RUN_MODE == 'web':
+    server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
+    server.serve_forever()
+else:
+    print('mode was undefined')
